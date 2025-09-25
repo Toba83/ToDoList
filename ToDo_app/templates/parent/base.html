@@ -6,6 +6,12 @@
     {% block head %} {% endblock %}
 </head>
 <body>
+    {% include 'partial/header.html' %}
+    <hr>
+
     {% block content %} {% endblock %}
+    <hr>
+
+    {% include 'partial/footer.html' %}
 </body>
 </html>

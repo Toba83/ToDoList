@@ -1,0 +1,38 @@
+{% extends 'parent/base.html' %}
+{% block title %}Task list{% endblock %}
+{% block content %}
+
+    <h1>Profile</h1>
+
+    <a href="{% url 'todo_app:create_task' %}">ایجاد تسک جدید</a>
+
+    <table style="width: 80%; border: 2px solid black; text-align: right; direction: rtl;">
+        <tr>
+
+            <th>ردیف</th>
+            <th>تسک ها</th>
+            <th>ویرایش</th>
+            <th>حذف</th>
+
+        </tr>
+        <hr>
+
+        {% for task in tasks %}
+
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
+                </td>
+                <td>
+                    <a href="{% url 'todo_app:edit_task' task.id %}">ویرایش</a>
+                </td>
+                <td>
+                    <a href="{% url 'todo_app:delete_task' task.id %}">حذف</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}

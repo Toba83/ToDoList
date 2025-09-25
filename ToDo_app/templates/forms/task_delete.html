@@ -1,0 +1,17 @@
+{% extends 'parent/base.html' %}
+{% block title %}Task delete{% endblock %}
+{% block content %}
+
+    <h1>Delete Task</h1>
+    <hr>
+
+    <h2> مطمئن هستی؟ <a href="{{ task.get_absolute_url }}">"{{ task.title }}"</a> آیا از حذف تسک </h2>
+    <a href="{% url 'todo_app:profile' %}">برگشت به پروفایل</a>
+    <br>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="حذف">
+    </form>
+
+{% endblock %}

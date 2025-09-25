@@ -1,0 +1,13 @@
+{% if request.user.is_authenticated %}
+    <div>
+        <a href="{% url 'todo_app:profile' %}">{{ request.user.username }}</a>
+    </div>
+
+{% else %}
+    <a href="{% url 'todo_app:login' %}">log in</a>
+
+{% endif %}
+<br>
+<br>
+
+<a href="{% url 'todo_app:profile' %}"> Profile</a>

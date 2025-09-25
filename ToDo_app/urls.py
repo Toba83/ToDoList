@@ -5,6 +5,11 @@ app_name = 'todo_app'
 
 urlpatterns = [
     path('home/', views.index, name='index'),
-    path('tasks/', views.Task_list, name='task_list'),
-    path('tasks/<int:pk>/', views.Task_detail, name='task_detail'),
+    path('tasks/', views.task_list, name='task_list'),
+    path('tasks/<int:pk>/', views.task_detail, name='task_detail'),
+    path('create_task/', views.create_task, name='create_task'),
+    path('profile/', views.profile, name='profile'),
+    path('edit_task/<task_id>/', views.edit_task, name='edit_task'),
+    path('delete_task/<task_id>/', views.delete_task, name='delete_task'),
+    path('login/', views.user_login, name='login'),
 ]

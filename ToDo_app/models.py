@@ -13,31 +13,35 @@ class Task(models.Model):
         MEDIUM = 'M', 'Medium'
         HIGH = 'H', 'High'
 
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length= 250)
     description = models.TextField()
-    slug = models.SlugField(max_length=250, unique=True)
+    slug = models.SlugField(max_length= 250, unique= True)
 
-    def save(self,*args,**kwargs):
-        self.slug=slugify(self.title)
-        super(Task, self).save(*args,**kwargs)
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Task, self).save(*args, **kwargs)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    due_date = models.DateField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add= True)
+    updated_at = models.DateTimeField(auto_now= True)
+    due_date = models.DateField(null= True, blank= True)
 
-    completed = models.BooleanField(default=False)
+    completed = models.BooleanField(default= False)
 
-    priority = models.CharField(max_length=10, choices=Priority.choices, default=Priority.MEDIUM)
+    def complete_status(self):
+        return 'completed' if self.completed else 'not completed'
 
-    task_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
+    priority = models.CharField(max_length= 10, choices= Priority.choices, default= Priority.MEDIUM)
+
+    task_user = models.ForeignKey(User, on_delete= models.CASCADE, related_name= 'tasks')
 
     def get_absolute_url(self):
-        return reverse('todo_app:task_detail', args=[self.pk])
+        return reverse('todo_app:task_detail', args= [self.pk])
 
     class Meta:
         ordering = ['-created_at']
         indexes = [
-            models.Index(fields=['-created_at']),
+            models.Index(fields= ['-created_at']),
         ]
 
     def __str__(self):

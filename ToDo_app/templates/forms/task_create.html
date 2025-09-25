@@ -1,0 +1,30 @@
+{% extends 'parent/base.html' %}
+{% block title %}Task create{% endblock %}
+{% block content %}
+
+    <h1>Task</h1>
+    <hr>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ثبت">
+    </form>
+
+    {% if form.errors %}
+        fix errors
+        <br>
+        {% for field in form %}
+
+            {% if field.errors %}
+                {% for error in field.errors %}
+
+                    {{ error }}
+
+                {% endfor %}
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

@@ -5,7 +5,7 @@
     <h1>Task Detail</h1>
     <hr>
 
-    <h2>{{ task.title }}</h2>
+    <h2>{{ task.title }} by {{ task.task_user }}</h2>
     <hr>
 
     <h4>{{ task.description }}</h4>
@@ -15,5 +15,13 @@
     <hr>
 
     <p>created_at: {{ task.created_at }}</p>
+    <hr>
+
+    <h3>({{ task.complete_status }})</h3>
+    <hr>
+
+    <h2>
+        <a href='#'>حذف تسک</a>
+    </h2>
 
 {% endblock %}
