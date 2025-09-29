@@ -1,0 +1,13 @@
+<dive>
+
+    <h2>تسک های با 1 یا کمتر از 1 هفته فرصت</h2>
+
+    {% for task in last_week_tasks %}
+
+        <h4>
+            <a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
+        </h4>
+
+    {% endfor %}
+
+</dive>

@@ -1,0 +1,13 @@
+<dive>
+
+    <h2>تسک های تا آخر امروز</h2>
+
+    {% for task in today_task %}
+
+        <h4>
+            <a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
+        </h4>
+
+    {% endfor %}
+
+</dive>
