@@ -12,7 +12,8 @@ def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def task_list(request):
-    tasks = Task.objects.all()
+    user = request.user
+    tasks = Task.objects.filter(task_user=user)
     paginator = Paginator(tasks, 3)
     page_number = request.GET.get('page', 1)
     try:
@@ -27,7 +28,8 @@ def task_list(request):
     return render(request, 'task/task_list.html', context)
 
 def task_detail(request, pk):
-    task = get_object_or_404(Task, pk= pk)
+    user = request.user
+    task = get_object_or_404(Task, pk= pk, task_user=user)
     context = {
         'task': task,
     }
@@ -51,18 +53,20 @@ def create_task(request):
 
 def edit_task(request, task_id):
     task = get_object_or_404(Task, pk= task_id)
-
-    if request.method == "POST":
-        form = TaskEditForm(request.POST, instance= task)
-        if form.is_valid():
-            task = form.save()
-            priority = form.cleaned_data.get('priority')
-            if priority:
-                task.priority = priority
-                task.save()
-            return redirect('todo_app:profile')
+    if task.task_user == request.user:
+        if request.method == "POST":
+            form = TaskEditForm(request.POST, instance= task)
+            if form.is_valid():
+                task = form.save()
+                priority = form.cleaned_data.get('priority')
+                if priority:
+                    task.priority = priority
+                    task.save()
+                return redirect('todo_app:profile')
+        else:
+            form = TaskEditForm(instance= task)
     else:
-        form = TaskEditForm(instance= task)
+        return HttpResponse("You are not the owner of this task.")
 
     return render(request, 'forms/task_edit.html', {'form': form, 'task': task})
 def profile(request):
@@ -75,9 +79,12 @@ def profile(request):
 
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id= task_id)
-    if request.method == 'POST':
-        task.delete()
-        return redirect('todo_app:profile')
+    if task.task_user == request.user:
+        if request.method == 'POST':
+            task.delete()
+            return redirect('todo_app:profile')
+    else:
+        return HttpResponse("You are not the owner of this task.")
     return render(request, 'forms/task_delete.html', {'task': task})
 
 def user_login(request):

@@ -19,8 +19,18 @@ class Task(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            base_slug = f'{self.task_user.username}-{slugify(self.title)}'
+            slug = base_slug.lower()
+            counter = 1
+
+            while Task.objects.filter(slug=slug).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+
+            self.slug = slug
+            
         super(Task, self).save(*args, **kwargs)
+
 
     created_at = models.DateTimeField(auto_now_add= True)
     updated_at = models.DateTimeField(auto_now= True)
