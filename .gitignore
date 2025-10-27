@@ -1,0 +1,68 @@
+# === Django ===
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+
+# === Virtual Environments ===
+.env
+.venv/
+venv/
+env/
+.TDLenv/
+ENV/
+env.bak/
+venv.bak/
+
+# === IDEs ===
+# PyCharm
+.idea/
+# VSCode
+.vscode/
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# === Python ===
+*.py[cod]
+*$py.class
+
+# === Distribution / packaging ===
+.Python
+build/
+dist/
+downloads/
+*.egg-info/
+.eggs/
+*.whl
+*.manifest
+*.spec
+
+# === Test / coverage ===
+htmlcov/
+.tox/
+.coverage
+.cache/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# === Jupyter ===
+.ipynb_checkpoints/
+
+# === OS generated files ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+*.log
+
+# === Migrations (optional, uncomment if not needed) ===
+# */migrations/
+# */migrations/*.py
+# */migrations/*.pyc

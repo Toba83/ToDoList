@@ -21,7 +21,7 @@
     <hr>
 
     <h2>
-        <a href='#'>حذف تسک</a>
+        <a href='{% url 'todo_app:delete_task' task.id %}'>حذف تسک</a>
     </h2>
 
 {% endblock %}

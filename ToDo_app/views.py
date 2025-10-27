@@ -13,15 +13,18 @@ def index(request):
 
 def task_list(request):
     user = request.user
-    tasks = Task.objects.filter(task_user=user)
+    tasks = Task.objects.filter(task_user= user)
     paginator = Paginator(tasks, 3)
     page_number = request.GET.get('page', 1)
     try:
         tasks = paginator.page(page_number)
+
     except PageNotAnInteger:
         tasks = paginator.page(1)
+
     except EmptyPage:
         tasks = paginator.page(paginator.num_pages)
+
     context = {
         'tasks': tasks
     }
@@ -29,7 +32,8 @@ def task_list(request):
 
 def task_detail(request, pk):
     user = request.user
-    task = get_object_or_404(Task, pk= pk, task_user=user)
+    task = get_object_or_404(Task, pk= pk, task_user= user)
+
     context = {
         'task': task,
     }
@@ -52,7 +56,7 @@ def create_task(request):
     return render(request, 'forms/task_create.html', {'form': form})
 
 def edit_task(request, task_id):
-    task = get_object_or_404(Task, pk= task_id)
+    task = get_object_or_404(Task, id= task_id)
     if task.task_user == request.user:
         if request.method == "POST":
             form = TaskEditForm(request.POST, instance= task)
@@ -92,7 +96,10 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            user = authenticate(request, username= cd['username'], password= cd['password'])
+            user = authenticate(request,
+                                username= cd['username'],
+                                password= cd['password']
+                                )
             if user is not None:
                 if user.is_active:
                     login(request, user)
