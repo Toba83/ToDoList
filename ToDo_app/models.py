@@ -37,8 +37,8 @@ class Task(models.Model):
             slug = base_slug.lower()
             counter = 1
 
-            while Task.objects.filter(slug=slug).exists():
-                slug = f'{base_slug}-{counter}'
+            while Task.objects.filter(slug= slug).exclude(id= self.id).exists():
+                slug = f'{slug}-{counter}'
                 counter += 1
 
             self.slug = slug
