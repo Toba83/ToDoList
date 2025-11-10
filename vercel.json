@@ -1,18 +1,23 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "ToDoList/wsgi.py",
       "use": "@vercel/python"
-    },
-    {
-      "src": "staticfiles/**/*",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "ToDoList/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "ToDoList.settings",
+    "PYTHONUNBUFFERED": "1"
+  }
 }
