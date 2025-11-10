@@ -1,19 +1,18 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.11",
+      "maxDuration": 60,
+      "memory": 512
     }
-  ],
+  },
   "routes": [
     { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
     { "src": "/(.*)", "dest": "api/index.py" }
   ],
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 60,
-      "memory": 512
-    }
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "ToDoList.settings",
+    "PYTHONUNBUFFERED": "1"
   }
 }
