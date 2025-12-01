@@ -1,27 +1,43 @@
-{% extends 'parent/base.html' %}
-{% block title %}Task detail{% endblock %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Detail</title>
+<link rel="stylesheet" type="text/css" href="{% static 'task_detail.css'%}">
+</head>
+<body>
+<div class="container">
+<h1 class="header-title">Task Detail</h1>
+<hr>
 
-    <h1>Task Detail</h1>
-    <hr>
 
-    <h2>{{ task.title }} by {{ task.task_user }}</h2>
-    <hr>
+<h2>{{ task.title }} — {{ task.task_user }}</h2>
+<hr>
 
-    <h4>{{ task.description }}</h4>
-    <hr>
 
-    <h5>{{ task.get_priority_display }}</h5>
-    <hr>
+<h4>{{ task.description }}</h4>
+<hr>
 
-    <p>created_at: {{ task.created_at }}</p>
-    <hr>
 
-    <h3>({{ task.complete_status }})</h3>
-    <hr>
+<h5 class="priority">{{ task.get_priority_display }}</h5>
+<hr>
 
-    <h2>
-        <a href='{% url 'todo_app:delete_task' task.id %}'>حذف تسک</a>
-    </h2>
 
-{% endblock %}
+<p>ایجاد شده در: {{ task.created_at }}</p>
+<hr>
+
+<p>نهایت تاریخ انجام تسک: {{ task.due_date }}</p>
+<hr>
+
+<h3>وضعیت: ({{ task.complete_status }})</h3>
+<hr>
+
+
+<div class="delete-btn">
+<a href="{% url 'todo_app:delete_task' task.id %}">حذف تسک</a>
+</div>
+</div>
+</body>
+</html>

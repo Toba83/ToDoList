@@ -1,0 +1,41 @@
+.today-tasks-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.06);
+    margin: 25px 0;
+    direction: rtl;
+}
+
+.today-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4b0082;
+    margin-bottom: 15px;
+}
+
+.today-task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.today-task-list li {
+    margin-bottom: 10px;
+}
+
+.today-task-link {
+    text-decoration: none;
+    color: #4b0082;
+    font-size: 16px;
+}
+
+.today-task-link:hover {
+    text-decoration: underline;
+}
+
+.no-task {
+    color: #777;
+    font-size: 15px;
+    margin-top: 10px;
+}

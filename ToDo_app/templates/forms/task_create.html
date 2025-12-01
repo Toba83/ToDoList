@@ -1,30 +1,32 @@
 {% extends 'parent/base.html' %}
-{% block title %}Task create{% endblock %}
+{% load static %}
+{% block title %}Create Task{% endblock %}
 {% block content %}
 
-    <h1>Task</h1>
-    <hr>
+<link rel="stylesheet" type="text/css" href="{% static 'task_create.css' %}"    >
+<div class="task-create-container">
 
-    <form method="post">
+    <h1 class="task-create-title">ایجاد تسک جدید</h1>
+
+    <form method="post" class="task-create-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="ثبت">
+        <button type="submit" class="btn-submit">ثبت</button>
     </form>
 
     {% if form.errors %}
-        fix errors
-        <br>
-        {% for field in form %}
-
-            {% if field.errors %}
-                {% for error in field.errors %}
-
-                    {{ error }}
-
+        <div class="form-error-box">
+            <h4>خطاها:</h4>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
                 {% endfor %}
-            {% endif %}
-
-        {% endfor %}
+            </ul>
+        </div>
     {% endif %}
+
+</div>
 
 {% endblock %}

@@ -1,13 +1,28 @@
-{% if request.user.is_authenticated %}
-    <div>
-        <a href="{% url 'todo_app:profile' %}">{{ request.user.username }}</a>
-    </div>
+{% load static %}
 
-{% else %}
-    <a href="{% url 'todo_app:login' %}">log in</a>
+<link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
 
-{% endif %}
-<br>
-<br>
+<div class="user-nav">
 
-<a href="{% url 'todo_app:profile' %}"> Profile</a>
+    {% if request.user.is_authenticated %}
+
+        <a href="{% url 'todo_app:profile' %}" class="user-link">
+            {{ request.user.username }}
+        </a>
+
+        <a href="{% url 'todo_app:logout' %}" class="logout-link">
+            خروج
+        </a>
+
+    {% else %}
+
+        <a href="{% url 'todo_app:login' %}" class="login-link">
+            ورود
+        </a>
+        <a href="{% url 'todo_app:register' %}" class="register-link">
+            ثبت نام
+        </a>
+
+    {% endif %}
+
+</div>

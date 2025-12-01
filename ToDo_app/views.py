@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -9,8 +10,9 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, 'task/index.html')
 
+@login_required
 def task_list(request):
     user = request.user
     tasks = Task.objects.filter(task_user= user)
@@ -30,6 +32,7 @@ def task_list(request):
     }
     return render(request, 'task/task_list.html', context)
 
+@login_required
 def task_detail(request, pk):
     user = request.user
     task = get_object_or_404(Task, pk= pk, task_user= user)
@@ -39,6 +42,7 @@ def task_detail(request, pk):
     }
     return render(request, 'task/task_detail.html', context)
 
+@login_required
 def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -55,6 +59,7 @@ def create_task(request):
         form = TaskForm()
     return render(request, 'forms/task_create.html', {'form': form})
 
+@login_required
 def edit_task(request, task_id):
     task = get_object_or_404(Task, id= task_id)
     if task.task_user == request.user:
@@ -73,6 +78,8 @@ def edit_task(request, task_id):
         return HttpResponse("You are not the owner of this task.")
 
     return render(request, 'forms/task_edit.html', {'form': form, 'task': task})
+
+@login_required
 def profile(request):
     user = request.user
     tasks = Task.objects.filter(task_user= user)
@@ -81,6 +88,7 @@ def profile(request):
     }
     return render(request, 'task/profile.html', context)
 
+@login_required
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id= task_id)
     if task.task_user == request.user:
@@ -91,7 +99,7 @@ def delete_task(request, task_id):
         return HttpResponse("You are not the owner of this task.")
     return render(request, 'forms/task_delete.html', {'task': task})
 
-def user_login(request):
+'''def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -113,4 +121,21 @@ def user_login(request):
     context = {
         'form': form,
     }
-    return render(request, 'forms/login.html', context)
+    return render(request, 'forms/login.html', context)'''
+
+def user_logout(request):
+    logout(request)
+    return redirect(request.META.get('HTTP_REFERER'))
+
+def user_register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return render(request, 'registration/register_done.html', {'user': user})
+    else:
+        form = UserRegisterForm()
+
+    return render(request, 'registration/register.html', {'form': form})

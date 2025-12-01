@@ -1,0 +1,22 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+{% block title %}ورود{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+
+<div class="login-container">
+
+    <h1 class="login-title">ورود به حساب</h1>
+
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-submit">ورود</button>
+    </form>
+
+    <p>Don't have an account yet? <a href="{% url 'todo_app:register' %}">No</a></p>
+
+</div>
+
+{% endblock %}

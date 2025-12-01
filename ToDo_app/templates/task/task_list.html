@@ -1,24 +1,35 @@
 {% extends 'parent/base.html' %}
+{% load static %}
 {% block title %}Task list{% endblock %}
 {% block content %}
 
-    <h1>Task List</h1>
-    <hr>
 
-    <ol style="--length: {{ tasks | length }}">
-        {% for task in tasks %}
+<link rel="stylesheet" type="text/css" href="{% static 'task_list.css' %}">
 
-            <li style="--i: {{ forloop.counter }}">
-                <h3>
-                    <a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
-                </h3>
 
-                <h5>
-                    {{ task.description | truncatewords:3 }} | {{ task.priority }}
-                </h5>
-            </li>
+<div class="container">
+<h1 class="header-title">Task List</h1>
+<hr>
 
-        {% endfor %}
-    </ol>
+
+<ol class="task-list" style="--length: {{ tasks|length }}">
+{% for task in tasks %}
+<li style="--i: {{ forloop.counter }}" class="task-item">
+<h3>
+<a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
+</h3>
+
+
+<h5 class="description">
+{{ task.description|truncatewords:3 }} | {{ task.priority }}
+</h5>
+</li>
+{% endfor %}
+</ol>
+</div>
+<br>
+
+{% include 'partial/pagination.html' with page_obj=tasks %}
 
 {% endblock %}
+

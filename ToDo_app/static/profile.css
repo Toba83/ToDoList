@@ -1,0 +1,149 @@
+.profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.07);
+    direction: rtl;
+    text-align: right;
+}
+
+.profile-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4b0082;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.stats-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    background: #f9f6ff;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e4d8ff;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-item1 {
+    background: #fff5f5;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #ffb3b3;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-item span {
+    color: #555;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-item1 span  {
+    color: #cc0000;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-item strong  {
+    margin-top: 6px;
+    font-size: 20px;
+    color: #4b0082;
+    font-weight: bold;
+}
+
+.stat-item1 strong  {
+    margin-top: 6px;
+    font-size: 20px;
+    color: #b30000;
+    font-weight: bold;
+}
+
+.create-btn-wrapper {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.create-btn {
+    padding: 10px 20px;
+    background: #4b0082;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.create-btn:hover {
+    background: #3d006d;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.task-table th {
+    background: #4b0082;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+}
+
+.task-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.task-link {
+    color: #4b0082;
+    text-decoration: none;
+}
+
+.task-link:hover {
+    text-decoration: underline;
+}
+
+.edit-btn,
+.delete-btn {
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+}
+
+.edit-btn {
+    background: #0077cc;
+}
+
+.edit-btn:hover {
+    background: #005fa3;
+}
+
+.delete-btn {
+    background: #d40000;
+}
+
+.delete-btn:hover {
+    background: #b00000;
+}

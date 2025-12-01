@@ -1,58 +1,82 @@
 {% extends 'parent/base.html' %}
+{% load static %}
 {% load todo_tags %}
-{% block title %}Task list{% endblock %}
+{% block title %}Profile{% endblock %}
 {% block content %}
 
-    <h1>Profile</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
 
-    <p>تعداد تسک ها</p>
-    {% total_tasks %}
-    <hr>
+<div class="profile-container">
 
-    <p>تعداد تسک های کامل شده</p>
-    {% total_completed_tasks %}
-    <hr>
+    <h1 class="profile-title">پروفایل</h1>
 
-    <p>تعداد تسک های کامل نشده</p>
-    {% total_uncompleted_tasks %}
-    <hr>
+    <div class="stats-box">
+
+        <div class="stat-item">
+            <span>تعداد تسک‌ها</span>
+            <strong>{% total_tasks request.user %}</strong>
+        </div>
+
+        <div class="stat-item">
+            <span>تسک‌های کامل‌شده</span>
+            <strong>{% total_completed_tasks request.user %}</strong>
+        </div>
+
+        <div class="stat-item">
+            <span>تسک‌های کامل‌نشده</span>
+            <strong>{% total_uncompleted_tasks request.user %}</strong>
+        </div>
+
+        <div class="stat-item1">
+            <span>تسک های تاریخ گذشته</span>
+            <strong>{% expired_tasks request.user %}</strong>
+        </div>
+
+        <div class="stat-item">
+            <span>تسک‌های امروز</span>
+            <strong>{% today_tasks request.user %}</strong>
+        </div>
+
+        <div class="stat-item">
+            <span>تسک‌های هفته گذشته</span>
+            <strong>{% last_week request.user %}</strong>
+        </div>
 
 
-    {% today_tasks %}
-    <hr>
+    </div>
 
-    {% last_week %}
-    <hr>
+    <div class="create-btn-wrapper">
+        <a href="{% url 'todo_app:create_task' %}" class="create-btn">ایجاد تسک جدید</a>
+    </div>
 
-    <a href="{% url 'todo_app:create_task' %}">ایجاد تسک جدید</a>
+    <table class="task-table">
+        <thead>
+            <tr>
+                <th>ردیف</th>
+                <th>تسک</th>
+                <th>ویرایش</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
 
-    <table style="width: 80%; border: 2px solid black; text-align: right; direction: rtl;">
-        <tr>
-
-            <th>ردیف</th>
-            <th>تسک ها</th>
-            <th>ویرایش</th>
-            <th>حذف</th>
-
-        </tr>
-        <hr>
-
+        <tbody>
         {% for task in tasks %}
-
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>
-                    <a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
+                    <a href="{{ task.get_absolute_url }}" class="task-link">{{ task.title }}</a>
                 </td>
                 <td>
-                    <a href="{% url 'todo_app:edit_task' task.id %}">ویرایش</a>
+                    <a href="{% url 'todo_app:edit_task' task.id %}" class="edit-btn">ویرایش</a>
                 </td>
                 <td>
-                    <a href="{% url 'todo_app:delete_task' task.id %}">حذف</a>
+                    <a href="{% url 'todo_app:delete_task' task.id %}" class="delete-btn">حذف</a>
                 </td>
             </tr>
-
         {% endfor %}
+        </tbody>
     </table>
+
+</div>
 
 {% endblock %}

@@ -1,9 +1,56 @@
 {% extends 'parent/base.html' %}
-{% block title %}home{% endblock %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
 {% block content %}
 
-    <h1>home</h1>
+<link rel="stylesheet" href="{% static 'home.css' %}">
 
+<div class="home-wrapper">
 
+    <!-- بخش توضیحات -->
+    <div class="home-container1">
+        <h1 class="home-title1">Manage and organize your tasks easily.</h1>
+        <hr>
+
+        <h2 class="subtitle">Here's an example of how you can manage your tasks:</h2>
+
+        <p class="description">
+            Create new tasks, categorize them, track your progress, and stay organized throughout your day.
+            Everything is displayed in a clean and simple dashboard.
+        </p>
+
+        <div class="features-box">
+            <div class="feature-card">
+                <h3>✔ Create Tasks</h3>
+                <p>Add tasks quickly with a simple and intuitive form.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>✔ Categorize</h3>
+                <p>Group your tasks based on priority or custom categories.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>✔ Track Progress</h3>
+                <p>Mark tasks as completed and stay on top of your goals.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش ایجاد اولین تسک -->
+    <div class="home-container2">
+        <h1 class="home-title2">Manage and organize your tasks easily.</h1>
+
+        <p class="home-subtitle">
+            Here's an example of how you can manage your tasks:
+        </p>
+
+        <a class="create-task-btn" href="{% url 'todo_app:create_task' %}">
+            Create Your First Task
+        </a>
+    </div>
+
+</div>
 
 {% endblock %}

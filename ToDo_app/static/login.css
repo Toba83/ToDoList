@@ -1,0 +1,59 @@
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.08);
+    direction: rtl;
+}
+
+.login-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #4b0082; /* بنفش پررنگ */
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.login-form p {
+    margin-bottom: 16px;
+}
+
+.login-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border 0.2s;
+}
+
+.login-form input:focus {
+    border-color: #4b0082;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #4b0082;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background: #3c0068;
+}

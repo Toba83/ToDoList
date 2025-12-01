@@ -1,13 +1,26 @@
-<dive>
+{% load static %}
 
-    <h2>تسک های تا آخر امروز</h2>
+<link rel="stylesheet" type="text/css" href="{% static 'today_tasks.css' %}">
 
-    {% for task in today_task %}
+<div class="today-tasks-box">
 
-        <h4>
-            <a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
-        </h4>
+    <h2 class="today-title">تسک‌های تا پایان امروز</h2>
 
-    {% endfor %}
+    {% if today_task %}
+        <ul class="today-task-list">
 
-</dive>
+            {% for task in today_task %}
+                <li>
+                    <a href="{{ task.get_absolute_url }}" class="today-task-link">
+                        {{ task.title }}
+                    </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+
+    {% else %}
+        <p class="no-task">تسکی برای امروز ثبت نشده</p>
+    {% endif %}
+
+</div>

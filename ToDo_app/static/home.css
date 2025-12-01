@@ -1,0 +1,117 @@
+/* حذف flex از body تا باکس‌ها کنار هم نروند */
+body {
+    direction: rtl;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* کانتینر کلی — همه چیز زیر هم */
+.home-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/*------------------- بخش توضیحات -------------------*/
+.home-container1 {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Titles */
+.home-title1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #5a0ea8;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.description {
+    margin-top: 10px;
+    color: #444;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* Features Box */
+.features-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.feature-card {
+    flex: 1;
+    background: #f8f2ff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: 0.25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.feature-card h3 {
+    color: #5a0ea8;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #333;
+    font-size: 14px;
+}
+
+/*------------------- بخش ساخت تسک -------------------*/
+.home-container2 {
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.home-title2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.home-subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.create-task-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #5a0ea8;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 14px;
+    font-size: 16px;
+    transition: 0.2s ease-in-out;
+}
+
+.create-task-btn:hover {
+    background: #4d0c90;
+}

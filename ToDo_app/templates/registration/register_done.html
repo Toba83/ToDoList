@@ -1,0 +1,19 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'register_done.css' %}">
+
+<div class="register-done">
+
+    <h2 class="user-register"> Welcome dear {{ user.username }}!</h2>
+    <br>
+
+    <h3>
+        Do You want see your login? <a href="{% url 'todo_app:profile' %}">click here</a>
+    </h3>
+
+</div>
+
+{% endblock %}

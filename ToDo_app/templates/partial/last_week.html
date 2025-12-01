@@ -1,13 +1,25 @@
-<dive>
+{% load static %}
 
-    <h2>تسک های با 1 یا کم تر از 1 هفته فرصت</h2>
+<link rel="stylesheet" type="text/css" href="{% static 'last_week.css' %}">
 
-    {% for task in last_week_tasks %}
+<div class="week-tasks-box">
 
-        <h4>
-            <a href="{{ task.get_absolute_url }}">{{ task.title }}</a>
-        </h4>
+    <h2 class="week-title">تسک‌های با یک هفته یا کمتر فرصت</h2>
 
-    {% endfor %}
+    {% if last_week_tasks %}
+        <ul class="week-task-list">
 
-</dive>
+            {% for task in last_week_tasks %}
+                <li>
+                    <a href="{{ task.get_absolute_url }}" class="week-task-link">
+                        {{ task.title }}
+                    </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    {% else %}
+        <p class="no-week-task">هیچ تسکی با فرصت یک هفته‌ای وجود ندارد</p>
+    {% endif %}
+
+</div>

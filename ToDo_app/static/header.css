@@ -1,0 +1,45 @@
+.user-nav {
+    gap: 15px;
+    padding: 10px 0;
+    direction: rtl;
+}
+
+.user-nav a {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.user-link {
+    background: #4b0082;
+    color: #fff;
+}
+
+.user-link:hover {
+    background: #3a0068;
+}
+
+.login-link {
+    background: #4b0082;
+    color: #fff;
+}
+
+.login-link:hover {
+    background: #3a0068;
+}
+
+.logout-link {
+    background: #d40000;
+    color: #fff;
+}
+
+.logout-link:hover {
+    background: #b00000;
+}
+
+.register-link {
+    background: #4b0082;
+    color: #fff;
+}

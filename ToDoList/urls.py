@@ -21,5 +21,6 @@ import ToDo_app
 
 urlpatterns = [
     path('', include('ToDo_app.urls'), name='ToDoList'),
+    path('todo/', include('ToDo_app.urls'), name='ToDoList'),
     path('admin/', admin.site.urls),
 ]

@@ -1,0 +1,41 @@
+.week-tasks-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.06);
+    margin: 25px 0;
+    direction: rtl;
+}
+
+.week-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4b0082;
+    margin-bottom: 15px;
+}
+
+.week-task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.week-task-list li {
+    margin-bottom: 10px;
+}
+
+.week-task-link {
+    text-decoration: none;
+    color: #4b0082;
+    font-size: 16px;
+}
+
+.week-task-link:hover {
+    text-decoration: underline;
+}
+
+.no-week-task {
+    color: #777;
+    font-size: 15px;
+    margin-top: 10px;
+}
