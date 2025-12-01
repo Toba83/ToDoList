@@ -1,0 +1,65 @@
+body {
+font-family: sans-serif;
+background: #f5f5f5;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+direction: rtl;
+}
+
+
+.container {
+background: #ffffff;
+width: 650px;
+margin-top: 40px;
+padding: 30px;
+border-radius: 16px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+
+.header-title {
+font-size: 28px;
+font-weight: bold;
+margin-bottom: 10px;
+color: #333;
+}
+
+
+hr {
+border: none;
+border-bottom: 1px solid #ddd;
+margin: 20px 0;
+}
+
+
+.task-list {
+list-style: none;
+padding: 0;
+margin: 0;
+counter-reset: task-counter;
+}
+
+
+.task-item {
+background: #fafafa;
+padding: 15px 20px;
+border-radius: 12px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+margin-bottom: 18px;
+position: relative;
+transition: 0.2s ease;
+}
+
+
+.task-item:hover {
+background: #f0e5ff;
+}
+
+
+.task-item::before {
+content: counter(task-counter);
+counter-increment: task-counter;
+position: absolute;
+}
